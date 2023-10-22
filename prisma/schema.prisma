@@ -9,3 +9,12 @@ datasource db {
   provider = "sqlserver"
   url      = env("DATABASE_URL")
 }
+
+model Issue {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String   @db.Text
+  status      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
