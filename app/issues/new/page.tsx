@@ -1,9 +1,13 @@
 'use client';
-
-import SimpleMDE from 'react-simplemde-editor';
+import dynamic from 'next/dynamic';
+// import SimpleMDE from 'react-simplemde-editor';
 import 'easymde/dist/easymde.min.css';
 import { Button, TextField } from '@radix-ui/themes';
 import React from 'react';
+
+const SimpleMdeEditor = dynamic(() => import('react-simplemde-editor'), {
+  ssr: false
+});
 
 const NewIssuePage = () => {
   return (
@@ -11,7 +15,7 @@ const NewIssuePage = () => {
       <TextField.Root>
         <TextField.Input placeholder='Title' />
       </TextField.Root>
-      <SimpleMDE placeholder='Description' />
+      <SimpleMdeEditor placeholder='Description' />
       <Button>Submit New Issue</Button>
     </div>
   );
